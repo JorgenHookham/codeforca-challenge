@@ -1,14 +1,15 @@
 default: build
 
+SOURCE=./source/index.ts
 TSC=./node_modules/typescript/bin/tsc
 
 install:
 	npm i
 
-build:
+build: $(SOURCE)
 	$(TSC)
 
-watch:
+watch: $(SOURCE)
 	$(TSC) --watch
 
 clean:
