@@ -1,4 +1,4 @@
-default: build
+default: deploy
 
 SOURCE=./source/index.ts
 TSC=./node_modules/typescript/bin/tsc
@@ -9,8 +9,15 @@ install:
 build: $(SOURCE)
 	$(TSC)
 
-watch: $(SOURCE)
-	$(TSC) --watch
+run:
+	node .
 
 clean:
 	rm -rf ./build
+	rm hashed-data.json
+	rm -rf node_modules
+
+deploy:
+	$(MAKE) install
+	$(MAKE) build
+	$(MAKE) run
